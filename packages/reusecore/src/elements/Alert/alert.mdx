@@ -1,0 +1,33 @@
+---
+name: Alert
+---
+
+import { Playground, PropsTable } from 'docz';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../theme';
+import Alert from './';
+
+# Alert
+
+## Basic Usage
+
+<Playground>
+  <ThemeProvider theme={theme}>
+    <>
+      <Alert>Default Alert</Alert>
+      <div style={{ marginBottom: '10px' }} />
+      <Alert colors="primary">Primary Alert</Alert>
+      <div style={{ marginBottom: '10px' }} />
+      <Alert colors="secondary">Secondary Alert</Alert>
+      <div style={{ marginBottom: '10px' }} />
+      <Alert colors="warning">Warning Alert</Alert>
+      <div style={{ marginBottom: '10px' }} />
+      <Alert colors="error">Warning Alert</Alert>
+    </>
+
+  </ThemeProvider>
+</Playground>
+
+## Properties
+
+<PropsTable of={Alert} />

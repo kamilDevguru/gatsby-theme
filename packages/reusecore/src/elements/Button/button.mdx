@@ -1,0 +1,73 @@
+---
+name: Button
+---
+
+import { Playground, PropsTable } from 'docz';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../theme';
+import { Icon } from 'react-icons-kit';
+import { arrow_right } from 'react-icons-kit/ikons/arrow_right';
+import Loader from '../Loader';
+import Button from './';
+
+# Button
+
+## Basic Usage
+
+<Playground>
+  <ThemeProvider theme={theme}>
+    <>
+      <Button title="Text Button" type="button" variant="textButton" />
+      <span style={{ marginRight: '10px' }} />
+      <Button title="Default" type="button" />
+      <span style={{ marginRight: '10px' }} />
+      <Button
+        title="outlined"
+        type="button"
+        onClick={() => {
+          console.log('hello');
+        }}
+        colors="primary"
+        variant="outlined"
+        icon={<Icon icon={arrow_right} />}
+      />
+      <span style={{ marginRight: '10px' }} />
+      <Button
+        title="Button with loader"
+        type="button"
+        onClick={() => {
+          console.log('hello');
+        }}
+        colors="secondaryWithBg"
+        variant="contained"
+        isLoading={true}
+        loader={<Loader loaderColor="white" />}
+      />
+      <span style={{ marginRight: '10px' }} />
+      <Button
+        title="Extended Fab"
+        type="button"
+        onClick={() => {
+          console.log('hello');
+        }}
+        colors="warningWithBg"
+        variant="extendedFab"
+        icon={<Icon icon={arrow_right} />}
+      />
+      <span style={{ marginRight: '10px' }} />
+      <Button
+        type="button"
+        onClick={() => {
+          console.log('hello');
+        }}
+        colors="errorWithBg"
+        variant="fab"
+        icon={<Icon icon={arrow_right} />}
+      />
+    </>
+  </ThemeProvider>
+</Playground>
+
+## Properties
+
+<PropsTable of={Button} />

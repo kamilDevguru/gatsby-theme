@@ -1,0 +1,33 @@
+---
+name: Switch
+---
+
+import { Playground, PropsTable } from 'docz';
+import Switch from './';
+
+# Switch
+
+## Basic Usage
+
+<Playground>
+  <div style={{ display: 'flex' }}>
+    <Switch labelText="Label Top" />
+    <span style={{ marginRight: '10px' }} />
+    <Switch isChecked={true} labelText="Label Bottom" labelPosition="bottom" />
+    <span style={{ marginRight: '10px' }} />
+    <Switch labelText="Label Left" labelPosition="left" switchColor="#ff5b60" />
+    <span style={{ marginRight: '10px' }} />
+    <Switch
+      isChecked={true}
+      labelText="Label Right"
+      labelPosition="right"
+      switchColor="#fdb32a"
+    />
+    <span style={{ marginRight: '10px' }} />
+    <Switch isMaterial={true} labelText="Label Top" />
+  </div>
+</Playground>
+
+## Properties
+
+<PropsTable of={Switch} />

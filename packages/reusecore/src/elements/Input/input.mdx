@@ -1,0 +1,35 @@
+---
+name: Input
+---
+
+import { Playground, PropsTable } from 'docz';
+import { Icon } from 'react-icons-kit';
+import { email } from 'react-icons-kit/ionicons/email';
+import Input from './';
+
+# Input
+
+## Basic Usage
+
+<Playground>
+  <div style={{ width: '300px' }}>
+    <Input
+      inputType="email"
+      label="Email"
+      isMaterial={true}
+      icon={<Icon icon={email} />}
+      iconPosition="right"
+    />
+    <div style={{ marginBottom: '20px' }} />
+    <Input
+      inputType="password"
+      label="Password"
+      passwordShowHide={true}
+      placeholder="Enter your password"
+    />
+  </div>
+</Playground>
+
+## Properties
+
+<PropsTable of={Input} />

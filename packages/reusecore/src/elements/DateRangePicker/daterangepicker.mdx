@@ -1,0 +1,28 @@
+---
+name: DateRangePickerBox
+---
+
+import { Playground, PropsTable } from 'docz';
+import DateRangePickerBox from './';
+
+# DateRangePickerBox
+
+## Basic Usage
+
+<Playground>
+  <div style={{ display: 'flex', height: '500px' }}>
+    <DateRangePickerBox
+      startDateId="start_id"
+      endDateId="end_id"
+      showClearDates={true}
+      startDatePlaceholderText="START"
+      endDatePlaceholderText="END"
+      // isRTL={true}
+      block={true}
+    />
+  </div>
+</Playground>
+
+## Properties
+
+<PropsTable of={DateRangePickerBox} />

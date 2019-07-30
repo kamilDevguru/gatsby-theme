@@ -1,0 +1,26 @@
+---
+name: Loader
+---
+
+import { Playground, PropsTable } from 'docz';
+import Loader from './';
+
+# Loader
+
+## Basic Usage
+
+<Playground>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <Loader />
+    <span style={{ marginRight: '10px' }} />
+    <Loader width={15} height={15} loaderColor="#028489" />
+    <span style={{ marginRight: '10px' }} />
+    <Loader width={20} height={20} loaderColor="#ff5b60" />
+    <span style={{ marginRight: '10px' }} />
+    <Loader width={25} height={25} loaderColor="#fdb32a" />
+  </div>
+</Playground>
+
+## Properties
+
+<PropsTable of={Loader} />

@@ -1,0 +1,9 @@
+# public folder
+public
+
+# npm module
+
+node_modules
+
+# pdf
+documentation.pdf

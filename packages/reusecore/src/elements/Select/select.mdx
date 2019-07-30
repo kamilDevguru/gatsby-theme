@@ -1,0 +1,28 @@
+---
+name: Select
+---
+
+import { Playground, PropsTable } from 'docz';
+import Select from './';
+import optionsArray from '../../data';
+
+# Select
+
+## Basic Usage
+
+<Playground>
+  <div style={{ width: '300px' }}>
+    <Select options={optionsArray} labelText="Select" />
+    <div style={{ marginBottom: '20px' }} />
+    <Select options={optionsArray} labelText="Multi Select" isMulti={true} />
+    <div style={{ minHeight: '230px' }} />
+  </div>
+</Playground>
+
+## Properties
+
+<PropsTable of={Select} />
+
+## Note:
+
+We use react select for our select component. Please follow react select official documentation [here.](https://react-select.com/home)

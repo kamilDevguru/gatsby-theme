@@ -1,0 +1,67 @@
+---
+name: Tooltip
+---
+
+import { ThemeProvider } from 'styled-components';
+import { Playground, PropsTable } from 'docz';
+import { theme } from '../../theme';
+import Tooltip from './';
+
+# Tooltip
+
+## Basic Usage
+
+<Playground>
+  <ThemeProvider theme={theme}>
+    <>
+      <p>
+        Here is a{' '}
+        <Tooltip
+          message={'Hello, I am a super cool tooltip'}
+          position={'top'}
+          bubbleStyle={{
+            boxShadow: '0 10px 20px rgba(0, 0, 0, 0.3)'
+          }}
+        >
+          tooltip
+        </Tooltip>{' '}
+        on top.
+      </p>
+      <p>
+        Here is a{' '}
+        <Tooltip
+          message={'Hello, I am a super cool tooltip'}
+          position={'bottom'}
+        >
+          tooltip
+        </Tooltip>{' '}
+        on bottom.
+      </p>
+      <p>
+        Here is a{' '}
+        <Tooltip
+          message={'Hello, I am a super cool tooltip'}
+          position={'left'}
+        >
+          tooltip
+        </Tooltip>{' '}
+        on left.
+      </p>
+      <p>
+        Here is a{' '}
+        <Tooltip
+          message={'Hello, I am a super cool tooltip'}
+          position={'right'}
+        >
+          tooltip
+        </Tooltip>{' '}
+        on right.
+      </p>
+    </>
+
+  </ThemeProvider>
+</Playground>
+
+## Properties
+
+<PropsTable of={Tooltip} />

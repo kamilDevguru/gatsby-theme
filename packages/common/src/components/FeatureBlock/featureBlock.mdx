@@ -1,0 +1,24 @@
+---
+name: FeatureBlock
+---
+
+import { ThemeProvider } from 'styled-components';
+import { Playground, PropsTable } from 'docz';
+import { agencyTheme } from '../../theme/agency';
+import FeatureBlock from './';
+
+# FeatureBlock
+
+## Basic Usage
+
+<Playground>
+  <ThemeProvider theme={agencyTheme}>
+    <>
+      <FeatureBlock/>
+    </>
+  </ThemeProvider>
+</Playground>
+
+## Properties
+
+<PropsTable of={FeatureBlock} />

@@ -1,0 +1,32 @@
+---
+name: ListGrid
+---
+
+import { Playground, PropsTable } from 'docz';
+
+import ListGrid from './';
+import Card from '../Card/index';
+import Image from '../Image/index';
+import DemoImage from '../Image/images.png';
+
+# ListGrid
+
+## Basic Usage
+
+<Playground>
+
+<ListGrid
+  data={[1, 2, 3, 4]}
+  columnWidth={1 / 4} //{[1, 1/2, 1/4]} responsive
+  component={() => (
+    <Card>
+      <Image src={DemoImage} alt="Demo Image" p={3} />
+    </Card>
+  )}
+/>
+
+</Playground>
+
+## Properties
+
+<PropsTable of={ListGrid} />

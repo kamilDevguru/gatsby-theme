@@ -1,0 +1,39 @@
+---
+name: Drawer
+---
+
+import { ThemeProvider } from 'styled-components';
+import { Playground, PropsTable } from 'docz';
+import { theme } from '../../theme';
+import Button from './../Button';
+import Drawer from './';
+
+# Drawer
+
+## Basic Usage
+
+<Playground>
+  <ThemeProvider theme={theme}>
+    <>
+      <Drawer drawerHandler={<Button title="Drawer" />}>
+        <p>Drawer content</p>
+      </Drawer>
+      <div style={{ marginBottom: '10px' }} />
+      <Drawer
+        placement="right"
+        drawerHandler={<Button colors="secondaryWithBg" title="Drawer Right" />}
+      >
+        <p>Drawer content</p>
+      </Drawer>
+    </>
+  </ThemeProvider>
+</Playground>
+
+## Properties
+
+<PropsTable of={Drawer} />
+
+## Note
+
+We use rc-drawer@1.7.6 for our drawer component. Please follow rc drawer api [here](https://react-component.github.io/drawer/)
+for custom settings.
