@@ -43,13 +43,13 @@ const BannerSection = ({
             <FeatureBlock
               title={
                 <Heading
-                  content="With Knowledge, Passion, Heart & Soul Agencies"
+                  content="Relaxt ondernemen met Boekhouder.nl"
                   {...title}
                 />
               }
               description={
                 <Text
-                  content="Agencies around the world are moving to the digital agencies. So, It is high time to introduce your agency digitaly ."
+                  content="Wij helpen ondernemers met het vinden van de juiste configuratie van hun administratie. Vergelijk meerdere boekhouders en online boekhouderprogramma's op prijs en kwaliteit."
                   {...description}
                 />
               }

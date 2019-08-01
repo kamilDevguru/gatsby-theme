@@ -160,7 +160,7 @@ Navbar.defaultProps = {
   },
   // Default logo size
   logoStyle: {
-    width: '128px',
+    width: '170px',
     height: 'auto',
   },
 };
