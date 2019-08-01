@@ -19,9 +19,11 @@ const BannerSection = ({
   discountAmount,
   outlineBtnStyle,
 }) => {
+  const onlineMembers = Math.floor(Math.random() * 30) + 10;
+
   const ButtonGroup = () => (
     <Fragment>
-      <Button title="LEARN MORE" {...btnStyle} />
+      <Button title="Vergelijk boekhouders" {...btnStyle} />
       <Button
         title="WATCH WORKS"
         variant="textButton"
@@ -37,14 +39,20 @@ const BannerSection = ({
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
-              <Text content="25% Discount" {...discountAmount} />
-              <Text content="on every first project budget" {...discountText} />
+              <Text
+                content={`${onlineMembers} ondernemers`}
+                {...discountAmount}
+                color='#EB4C4B'
+                fontWeight={700}
+              />
+              <Text content="onlinw op vwokhouswe.nl" {...discountText} />
             </DiscountLabel>
             <FeatureBlock
               title={
                 <Heading
                   content="Relaxt ondernemen met Boekhouder.nl"
                   {...title}
+                  color='#FF9300'
                 />
               }
               description={

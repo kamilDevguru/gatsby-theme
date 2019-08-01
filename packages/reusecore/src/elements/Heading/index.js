@@ -20,9 +20,13 @@ const HeadingWrapper = styled('p')(
   themed('Heading')
 );
 
-const Heading = ({ content, ...props }) => (
-  <HeadingWrapper {...props}>{content}</HeadingWrapper>
-);
+const Heading = ({ content, ...props }) => {
+  // console.log('props :', content, props);
+
+  return (
+    <HeadingWrapper {...props}>{content}</HeadingWrapper>
+  );
+}
 
 export default Heading;
 
@@ -64,6 +68,7 @@ Heading.propTypes = {
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
   ]),
+  color: PropTypes.string,
   ...base.propTypes
 };
 
