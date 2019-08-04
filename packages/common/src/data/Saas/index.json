@@ -219,31 +219,37 @@
     {
       "label": "Home",
       "path": "#banner_section",
+      "staticLink": false,
       "offset": "70"
     },
     {
       "label": "Service",
       "path": "#service_section",
+      "staticLink": false,
       "offset": "70"
     },
     {
       "label": "Feature",
       "path": "#feature_section",
+      "staticLink": false,
       "offset": "70"
     },
     {
-      "label": "Pricing",
-      "path": "#pricing_section",
+      "label": "Blog",
+      "path": "/blog",
+      "staticLink": true,
       "offset": "70"
     },
     {
       "label": "Testimonial",
       "path": "#testimonial_section",
+      "staticLink": false,
       "offset": "70"
     },
     {
       "label": "FAQ",
       "path": "#faq_section",
+      "staticLink": false,
       "offset": "70"
     }
   ],

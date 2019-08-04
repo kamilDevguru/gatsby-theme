@@ -20,6 +20,7 @@ const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
           label
           path
           offset
+          staticLink
         }
       }
     }

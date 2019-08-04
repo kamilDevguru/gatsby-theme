@@ -259,8 +259,8 @@ export const MENU_ITEMS = [
     offset: '70',
   },
   {
-    label: 'Pricing',
-    path: '#pricing_section',
+    label: 'Blog',
+    path: '/blog',
     offset: '70',
   },
   {
