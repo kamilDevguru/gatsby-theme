@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { navigate } from 'gatsby';
+
 import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
 import Heading from 'reusecore/src/elements/Heading';
@@ -37,7 +39,7 @@ const PartnerSection = ({
             />
             <Box>
               <a href="#1">
-                <Button {...button} title="LEARN MORE" />
+                <Button {...button} onClick={() => navigate('/blog')} title="LEARN MORE" />
               </a>
             </Box>
           </Box>

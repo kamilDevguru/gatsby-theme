@@ -28,15 +28,17 @@ const BannerSection = ({
 }) => {
   const ButtonGroup = () => (
     <Fragment>
-      <Button title="FREE TRAIL" {...btnStyle} />
+      <Button title="Vergelijk boekhouders" {...btnStyle} />
       <Button
         className="outlined"
-        title="EXPLORE MORE"
+        title="Online boekhouden"
         variant="outlined"
         {...outlineBtnStyle}
       />
     </Fragment>
   );
+  const onlineNumber = Math.floor(Math.random() * 31) + 10; // NOTE: Generating random number between 10-40
+
   return (
     <BannerWrapper id="banner_section">
       <Particles />
@@ -44,21 +46,21 @@ const BannerSection = ({
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
-              <Text content="25% Discount" {...discountAmount} />
-              <Text content="on every first project " {...discountText} />
+              <Text content={`${onlineNumber} ondernemers`} {...discountAmount} />
+              <Text content="online op boekhouder.nl" {...discountText} />
             </DiscountLabel>
             <FeatureBlock
               title={
                 <Heading
-                  content="Ultimate Platform
-                    to monitor your best
-                    workflow."
-                  {...title}
+                  content="Relaxt ondernemen met Boekhouder.nl"
+                  {...title}                  
+                  fontWeight={400}
+                  color='#FF9300'
                 />
               }
               description={
                 <Text
-                  content="We help to create SaaS product that are innovative, differentiated with a superb User Experience, fully accessible through mobile devices. SaaS products are changing the world ."
+                  content="Wij helpen ondernemers met het vinden van de juiste configuratie van hun administratie. Vergelijk meerdere boekhouders en online boekhouderprogramma's op prijs en kwaliteit."
                   {...description}
                 />
               }

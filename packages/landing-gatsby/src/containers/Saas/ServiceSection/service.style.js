@@ -42,7 +42,7 @@ const ServiceSectionWrapper = styled.section`
       &:nth-child(1) {
         .feature__block {
           .icon__wrapper {
-            background: #fff5f6;
+            background: #fec887;
             color: #f55767;
           }
         }
@@ -51,7 +51,7 @@ const ServiceSectionWrapper = styled.section`
       &:nth-child(2) {
         .feature__block {
           .icon__wrapper {
-            background: #ebfff2;
+            background: #fec887;
             color: #29c05e;
           }
         }
@@ -59,7 +59,7 @@ const ServiceSectionWrapper = styled.section`
       &:nth-child(3) {
         .feature__block {
           .icon__wrapper {
-            background: #f1faff;
+            background: #fec887;
             color: #2595d4;
           }
         }
@@ -67,7 +67,7 @@ const ServiceSectionWrapper = styled.section`
       &:nth-child(4) {
         .feature__block {
           .icon__wrapper {
-            background: #fffae8;
+            background: #fec887;
             color: #e9b600;
           }
         }
@@ -75,7 +75,7 @@ const ServiceSectionWrapper = styled.section`
       &:nth-child(5) {
         .feature__block {
           .icon__wrapper {
-            background: #f5eeff;
+            background: #fec887;
             color: #a55cef;
           }
         }
@@ -83,7 +83,7 @@ const ServiceSectionWrapper = styled.section`
       &:nth-child(6) {
         .feature__block {
           .icon__wrapper {
-            background: #ffecfa;
+            background: #fec887;
             color: #e764a5;
           }
         }
