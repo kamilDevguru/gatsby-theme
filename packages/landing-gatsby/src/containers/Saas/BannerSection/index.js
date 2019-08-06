@@ -7,6 +7,7 @@ import Heading from 'reusecore/src/elements/Heading';
 import Button from 'reusecore/src/elements/Button';
 import FeatureBlock from 'common/src/components/FeatureBlock';
 import Container from 'common/src/components/UI/Container';
+
 import Particles from '../Particle';
 import BannerWrapper, {
   DiscountLabel,
@@ -14,7 +15,6 @@ import BannerWrapper, {
 } from './bannerSection.style';
 
 import BannerObject1 from 'common/src/assets/image/saas/banner/bannerObject1.png';
-import BannerObject2 from 'common/src/assets/image/saas/banner/bannerObject2.png';
 
 const BannerSection = ({
   row,
@@ -73,7 +73,6 @@ const BannerSection = ({
         <div className="objectWrapper">
           <Image src={BannerObject1} alt="BannerObject1" />
           <div className="dashboardWrapper">
-            <Image src={BannerObject2} alt="BannerObject2" />
           </div>
         </div>
       </BannerObject>
