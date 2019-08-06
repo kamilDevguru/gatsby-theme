@@ -121,8 +121,9 @@ Footer.defaultProps = {
   },
   // Default logo size
   logoStyle: {
-    width: '100px',
+    width: '160px',
     mb: '15px',
+    ml: '-10px',
   },
   // widget text default style
   textStyle: {
