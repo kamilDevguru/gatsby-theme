@@ -15,17 +15,21 @@ import LogoImage from '../../../common/src/assets/image/saas/logo.png';
 const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
   const Data = useStaticQuery(graphql`
     query {
-      saasJson {
-        MENU_ITEMS {
-          label
-          path
-          offset
-          staticLink
+      allContentfulNav {
+        edges {
+          node {
+            module {
+              caption
+              link
+              pageLink
+            }
+          }
         }
       }
     }
   `);
 
+  const menuItems = Data.allContentfulNav.edges[0].node.module;
   const { state, dispatch } = useContext(DrawerContext);
 
   // Toggle drawer
@@ -48,7 +52,7 @@ const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
           <Box {...menuWrapper}>
             <ScrollSpyMenu
               className="main_menu"
-              menuItems={Data.saasJson.MENU_ITEMS}
+              menuItems={menuItems}
               offset={-70}
             />
             <Drawer
@@ -60,7 +64,7 @@ const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
             >
               <ScrollSpyMenu
                 className="mobile_menu"
-                menuItems={Data.saasJson.MENU_ITEMS}
+                menuItems={menuItems}
                 drawerClose={true}
                 offset={-100}
               />
