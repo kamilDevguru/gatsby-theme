@@ -30,21 +30,37 @@ const ServiceSection = ({
           icon
         }
       }
+
+      allContentfulService {
+        edges {
+          node {
+            title
+            subtitle
+            module {
+              title
+              description
+            }
+          }
+        }
+      }
     }
   `);
+
+  const iconData = Data.saasJson.Service;
+  const serviceData = Data.allContentfulService.edges[0].node;
 
   return (
     <ServiceSectionWrapper id="feature_section">
       <Container>
         <Box {...sectionHeader}>
-          <Text content="OUR FEATURES" {...sectionSubTitle} />
-          <Heading content="Why you should choose our Saas" {...sectionTitle} />
+          <Text content={serviceData.subtitle} {...sectionSubTitle} />
+          <Heading content={serviceData.title} {...sectionTitle} />
         </Box>
         <Box className="row" {...row}>
-          {Data.saasJson.Service.map((feature, index) => (
+          {serviceData.module.map((feature, index) => (
             <Box className="col" {...col} key={index}>
               <FeatureBlock
-                icon={<i className={feature.icon} />}
+                icon={<i className={iconData[index].icon} />}
                 wrapperStyle={blockWrapperStyle}
                 iconStyle={iconStyle}
                 contentStyle={contentStyle}

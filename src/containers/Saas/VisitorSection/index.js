@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
@@ -22,6 +23,24 @@ const VisitorSection = ({
   imageWrapper,
   btnStyle,
 }) => {
+  const Data = useStaticQuery(graphql`
+    query {
+      allContentfulVisitor {
+        edges {
+          node {
+            title
+            description
+            module {
+              caption
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const visitorData = Data.allContentfulVisitor.edges[0].node;
+
   return (
     <VisitorSectionWrapper id="visitorSection">
       <SectionObject>
@@ -41,19 +60,19 @@ const VisitorSection = ({
           <FeatureBlock
             title={
               <Heading
-                content="Make your website growth with next level visitors"
+                content={visitorData.title}
                 {...title}
               />
             }
             description={
               <Text
-                content="For Enhanced performance we use LiteSpeed Web Server, HTTP/2, PHP7. We make your website faster, which will help you to increase search ranking!."
+                content={visitorData.description}
                 {...description}
               />
             }
             button={
               <a href="#1">
-                <Button title="HOW IT WORKS" {...btnStyle} />
+                <Button title={visitorData.module.caption} {...btnStyle} />
               </a>
             }
           />
