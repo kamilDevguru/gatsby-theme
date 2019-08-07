@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Icon from 'react-icons-kit';
@@ -37,49 +37,41 @@ const PricingSection = ({
 }) => {
   const Data = useStaticQuery(graphql`
     query {
-      saasJson {
-        MONTHLY_PRICING_TABLE {
-          name
-          price
-          priceLabel
-          description
-          buttonLabel
-          url
-          freePlan
-          listItems {
-            content
-          }
-        }
-        YEARLY_PRICING_TABLE {
-          name
-          price
-          priceLabel
-          description
-          buttonLabel
-          url
-          freePlan
-          listItems {
-            content
+      allContentfulPricing {
+        edges {
+          node {
+            subtitle
+            title
+            module {
+              freePlan
+              title
+              subtitle
+              price
+              monthlyPlanFlag
+              frequency
+              button {
+                title
+              }
+              module {
+                caption
+              }
+            }
+            options {
+              caption
+              monthlyFlag
+            }
           }
         }
       }
     }
   `);
 
-  const [state, setState] = useState({
-    data: Data.saasJson.MONTHLY_PRICING_TABLE,
-    active: true,
-  });
+  const optionData = Data.allContentfulPricing.edges[0].node.options;
 
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setTimeout(function() {
-      setLoading(true);
-    }, 500);
-  });
+  const [state, setState] = useState({isMonthlyPlan: true});
 
-  const data = state.data;
-  const activeStatus = state.active;
+  const planData = Data.allContentfulPricing.edges[0].node.module.filter(item => item.monthlyPlanFlag === state.isMonthlyPlan);
+  const activeStatus = state.isMonthlyPlan;
 
   const pricingCarouselOptions = {
     type: 'slider',
@@ -127,29 +119,27 @@ const PricingSection = ({
     <Box {...sectionWrapper} id="pricing_section">
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} />
-          <Heading {...secHeading} />
+          <Text
+            content={Data.allContentfulPricing.edges[0].node.subtitle}
+            {...secText}
+          />
+          <Heading
+            content={Data.allContentfulPricing.edges[0].node.title}
+            {...secHeading}
+          />
           <PricingButtonWrapper>
-            <Button
-              title="Monthly Plan"
-              className={activeStatus ? 'active-item' : ''}
-              onClick={() =>
-                setState({
-                  data: Data.saasJson.MONTHLY_PRICING_TABLE,
-                  active: true,
-                })
-              }
-            />
-            <Button
-              title="Annual Plan"
-              className={activeStatus === false ? 'active-item' : ''}
-              onClick={() =>
-                setState({
-                  data: Data.saasJson.YEARLY_PRICING_TABLE,
-                  active: false,
-                })
-              }
-            />
+            {optionData.map((option, index) =>
+              <Button
+                key={index}
+                title={option.caption}
+                className={activeStatus === option.monthlyFlag ? 'active-item' : ''}
+                onClick={() =>
+                  setState({
+                    isMonthlyPlan: option.monthlyFlag,
+                  })
+                }
+              />
+            )}
           </PricingButtonWrapper>
         </Box>
         <Box {...row}>
@@ -159,23 +149,23 @@ const PricingSection = ({
             controls={false}
           >
             <>
-              {data.map((pricingTable, index) => (
+              {planData.map((pricingTable, index) => (
                 <GlideSlide key={`pricing-table-${index}`}>
                   <PricingTable
                     freePlan={pricingTable.freePlan}
                     className="pricing_table"
                   >
                     <PricingHead>
-                      <Heading content={pricingTable.name} {...nameStyle} />
+                      <Heading content={pricingTable.title} {...nameStyle} />
                       <Text
-                        content={pricingTable.description}
+                        content={pricingTable.subtitle}
                         {...descriptionStyle}
                       />
                     </PricingHead>
                     <PricingPrice>
-                      <Text content={pricingTable.price} {...priceStyle} />
+                      <Text content={pricingTable.price.toFixed(2)} {...priceStyle} />
                       <Text
-                        content={pricingTable.priceLabel}
+                        content={pricingTable.frequency}
                         {...priceLabelStyle}
                       />
                     </PricingPrice>
@@ -183,26 +173,26 @@ const PricingSection = ({
                       <a href={pricingTable.url}>
                         {pricingTable.freePlan ? (
                           <Button
-                            title={pricingTable.buttonLabel}
+                            title={pricingTable.button.title}
                             {...buttonStyle}
                           />
                         ) : (
                           <Button
-                            title={pricingTable.buttonLabel}
+                            title={pricingTable.button.title}
                             {...buttonFillStyle}
                           />
                         )}
                       </a>
                     </PricingButton>
                     <PricingList>
-                      {pricingTable.listItems.map((item, index) => (
+                      {pricingTable.module.map((item, index) => (
                         <ListItem key={`pricing-table-list-${index}`}>
                           <Icon
                             icon={checkmark}
                             className="price_list_icon"
                             size={13}
                           />
-                          <Text content={item.content} {...listContentStyle} />
+                          <Text content={item.caption} {...listContentStyle} />
                         </ListItem>
                       ))}
                     </PricingList>
@@ -248,7 +238,6 @@ PricingSection.defaultProps = {
     mb: ['50px', '75px'],
   },
   secText: {
-    content: 'PRICING PLAN',
     as: 'span',
     display: 'block',
     textAlign: 'center',
@@ -259,7 +248,6 @@ PricingSection.defaultProps = {
     mb: '10px',
   },
   secHeading: {
-    content: 'What’s our monthly pricing subscription',
     textAlign: 'center',
     fontSize: ['20px', '24px'],
     fontWeight: '500',
