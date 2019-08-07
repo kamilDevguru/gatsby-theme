@@ -24,36 +24,51 @@ const FeatureSection = ({
     query {
       saasJson {
         Features {
-          id
           title
-          description
           icon
+          description
+        }
+      }
+
+      allContentfulFeature {
+        edges {
+          node {
+            title
+            subtitle
+            module {
+              title
+              description
+            }
+          }
         }
       }
     }
   `);
 
+  const featureData = Data.allContentfulFeature.edges[0].node;
+  const iconData = Data.saasJson.Features;
+
   return (
     <FeatureSectionWrapper id="service_section">
       <Container>
         <Box {...sectionHeader}>
-          <Text content="OUR SERVICES" {...sectionSubTitle} />
+          <Text content={featureData.subtitle} {...sectionSubTitle} />
           <Heading
-            content="Featured Service that We Provide"
+            content={featureData.title}
             {...sectionTitle}
           />
         </Box>
         <Box className="row" {...row}>
-          {Data.saasJson.Features.map((feature, index) => (
+          {featureData.module.map((service, index) => (
             <Box className="col" {...col} key={index}>
               <FeatureBlock
-                icon={<i className={feature.icon} />}
+                icon={<i className={iconData[index].icon} />}
                 wrapperStyle={blockWrapperStyle}
                 iconStyle={iconStyle}
                 contentStyle={contentStyle}
-                title={<Heading content={feature.title} {...featureTitle} />}
+                title={<Heading content={service.title} {...featureTitle} />}
                 description={
-                  <Text content={feature.description} {...featureDescription} />
+                  <Text content={service.description} {...featureDescription} />
                 }
                 className="saasFeature"
               />

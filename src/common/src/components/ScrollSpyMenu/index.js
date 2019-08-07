@@ -46,13 +46,13 @@ const ScrollSpyMenu = ({ className, menuItems, drawerClose, ...props }) => {
               {drawerClose ? (
                 <AnchorLink
                   href={menu.link}
-                  offset={menu.offset}
+                  offset={70}
                   onClick={toggleDrawer}
                 >
                   {menu.caption}
                 </AnchorLink>
               ) : (
-                <AnchorLink href={menu.link} offset={menu.offset}>
+                <AnchorLink href={menu.link} offset={70}>
                   {menu.caption}
                 </AnchorLink>
               )}

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
@@ -26,12 +27,31 @@ const BannerSection = ({
   discountAmount,
   outlineBtnStyle,
 }) => {
+  const Data = useStaticQuery(graphql`
+    query {
+      allContentfulBanner {
+        edges {
+          node {
+            title
+            content {
+              content
+            }
+            module {
+              caption
+            }
+          }
+        }
+      }
+    }
+  `);
+  const bannerData = Data.allContentfulBanner.edges[0].node;
+
   const ButtonGroup = () => (
     <Fragment>
-      <Button title="Vergelijk boekhouders" {...btnStyle} />
+      <Button title={bannerData.module[0].caption} {...btnStyle} />
       <Button
         className="outlined"
-        title="Online boekhouden"
+        title={bannerData.module[1].caption}
         variant="outlined"
         {...outlineBtnStyle}
       />
@@ -52,7 +72,7 @@ const BannerSection = ({
             <FeatureBlock
               title={
                 <Heading
-                  content="Relaxt ondernemen met Boekhouder.nl"
+                  content={bannerData.title}
                   {...title}                  
                   fontWeight={600}
                   color='#272838'
@@ -60,7 +80,7 @@ const BannerSection = ({
               }
               description={
                 <Text
-                  content="Wij helpen ondernemers met het vinden van de juiste configuratie van hun administratie. Vergelijk meerdere boekhouders en online boekhouderprogramma's op prijs en kwaliteit."
+                  content={bannerData.content.content}
                   {...description}
                 />
               }
