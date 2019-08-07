@@ -54,8 +54,8 @@ const BannerSection = ({
                 <Heading
                   content="Relaxt ondernemen met Boekhouder.nl"
                   {...title}                  
-                  fontWeight={400}
-                  color='#FF9300'
+                  fontWeight={600}
+                  color='#272838'
                 />
               }
               description={
