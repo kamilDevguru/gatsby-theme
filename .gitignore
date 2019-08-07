@@ -1,13 +1,5 @@
-# public folder
-public
+node_modules/
 
-# npm module
+public/
 
-node_modules
-
-# cache
-
-.cache
-
-# pdf
-documentation.pdf
+.cache/
