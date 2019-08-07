@@ -27,15 +27,26 @@ const TestimonialSection = ({
     query {
       saasJson {
         Testimonial {
-          id
-          name
-          comment
-          designation
           social_icon
+        }
+      }
+
+      allContentfulTestimonial {
+        edges {
+          node {
+            title
+            module {
+              name
+              career
+              content
+            }
+          }
         }
       }
     }
   `);
+
+  const testimonialData = Data.allContentfulTestimonial.edges[0].node;
 
   // Glide js options
   const glideOptions = {
@@ -47,7 +58,7 @@ const TestimonialSection = ({
   return (
     <TestimonialSectionWrapper id="testimonial_section">
       <Container>
-        <Text content="OUR REVIEWS" {...sectionSubTitle} />
+        <Text content={testimonialData.title} {...sectionSubTitle} />
         <GlideCarousel
           options={glideOptions}
           buttonWrapperStyle={btnWrapperStyle}
@@ -69,16 +80,16 @@ const TestimonialSection = ({
           }
         >
           <Fragment>
-            {Data.saasJson.Testimonial.map((item, index) => (
+            {testimonialData.module.map((item, index) => (
               <GlideSlide key={index}>
                 <Fragment>
                   <TextWrapper>
                     <i className="flaticon-quotes" />
-                    <Text content={item.comment} {...commentStyle} />
+                    <Text content={item.content} {...commentStyle} />
                     <ClientName>
                       <Heading content={item.name} {...nameStyle} />
                       <Heading
-                        content={item.designation}
+                        content={item.career}
                         {...designationStyle}
                       />
                     </ClientName>
@@ -92,7 +103,7 @@ const TestimonialSection = ({
                     </RoundWrapper>
                     <Button
                       variant="fab"
-                      icon={<i className={item.social_icon} />}
+                      icon={<i className={Data.saasJson.Testimonial[index].social_icon} />}
                       aria-label="social"
                     />
                   </ImageWrapper>

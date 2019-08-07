@@ -31,33 +31,47 @@ const FaqSection = ({
 }) => {
   const Data = useStaticQuery(graphql`
     query {
-      saasJson {
-        Faq {
-          id
-          title
-          description
-          expend
+      allContentfulFaq {
+        edges {
+          node {
+            title
+            subtitle
+            module {
+              question
+              answer
+            }
+            button {
+              caption
+            }
+          }
         }
       }
     }
   `);
+  const faqData = Data.allContentfulFaq.edges[0].node;
 
   return (
     <FaqSectionWrapper id="faq_section">
       <Container>
         <Box {...sectionHeader}>
-          <Text {...sectionSubTitle} />
-          <Heading {...sectionTitle} />
+          <Text
+            content={faqData.subtitle}
+            {...sectionSubTitle}
+          />
+          <Heading
+            content={faqData.title}
+            {...sectionTitle}
+          />
         </Box>
         <Box className="row">
           <Accordion>
             <Fragment>
-              {Data.saasJson.Faq.map((faqItem, index) => (
+              {faqData.module.map((faqItem, index) => (
                 <AccordionItem key={index} expanded={faqItem.expend}>
                   <Fragment>
                     <AccordionTitle>
                       <Fragment>
-                        <Heading content={faqItem.title} {...titleStyle} />
+                        <Heading content={faqItem.question} {...titleStyle} />
                         <IconWrapper>
                           <OpenIcon>
                             <Icon icon={minus} size={18} />
@@ -70,7 +84,7 @@ const FaqSection = ({
                     </AccordionTitle>
                     <AccordionBody>
                       <Text
-                        content={faqItem.description}
+                        content={faqItem.answer}
                         {...descriptionStyle}
                       />
                     </AccordionBody>
@@ -81,7 +95,10 @@ const FaqSection = ({
           </Accordion>
           <Box {...buttonWrapper}>
             <a href="#1">
-              <Button {...button} />
+              <Button
+                title={faqData.button.caption}
+                {...button}
+              />
             </a>
           </Box>
         </Box>
@@ -109,7 +126,6 @@ FaqSection.defaultProps = {
   },
   // sub section default style
   sectionSubTitle: {
-    content: 'FREQUENTLY ASKED QUESTIONS',
     as: 'span',
     display: 'block',
     textAlign: 'center',
@@ -121,7 +137,6 @@ FaqSection.defaultProps = {
   },
   // section title default style
   sectionTitle: {
-    content: 'Want to ask something about us ?',
     textAlign: 'center',
     fontSize: ['20px', '24px'],
     fontWeight: '400',
@@ -151,7 +166,6 @@ FaqSection.defaultProps = {
     justifyContent: 'center',
   },
   button: {
-    title: 'EXPLORE FORUM',
     type: 'button',
     fontSize: `${2}`,
     fontWeight: '600',

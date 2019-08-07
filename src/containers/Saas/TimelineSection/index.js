@@ -39,23 +39,33 @@ const TimelineSection = ({
 }) => {
   const Data = useStaticQuery(graphql`
     query {
-      saasJson {
-        Timeline {
-          title
-          description
+      allContentfulTimeline {
+        edges {
+          node {
+            title
+            subtitle
+            module {
+              title
+              description
+            }
+            button {
+              caption
+            }
+          }
         }
       }
     }
   `);
+  const timelineData = Data.allContentfulTimeline.edges[0].node;
 
   return (
     <Box {...sectionWrapper}>
       <Container>
         <Box {...sectionHeader}>
-          <Text {...sectionSubTitle} content="WORKING STEP" />
+          <Text {...sectionSubTitle} content={timelineData.subtitle} />
           <Heading
             {...sectionTitle}
-            content="How Pestro work behind the scenes"
+            content={timelineData.title}
           />
         </Box>
         <Box {...row}>
@@ -66,7 +76,7 @@ const TimelineSection = ({
           </Box>
           <Box {...col} {...textArea}>
             <TimelineWrapper>
-              {Data.saasJson.Timeline.map((item, index) => (
+              {timelineData.module.map((item, index) => (
                 <TimelineItem key={`timeline-item-${index}`}>
                   <TimelineIndex>
                     <Hidden>
@@ -106,7 +116,7 @@ const TimelineSection = ({
         </Box>
         <Box {...buttonWrapper}>
           <a href="#1">
-            <Button {...button} title="HIRE FOR PROJECT" />
+            <Button {...button} title={timelineData.button.caption} />
           </a>
         </Box>
       </Container>

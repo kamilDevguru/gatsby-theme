@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 
@@ -21,6 +22,23 @@ const PartnerSection = ({
   textArea,
   imageArea,
 }) => {
+  const Data = useStaticQuery(graphql`
+    query {
+      allContentfulPartner {
+        edges {
+          node {
+            title
+            description
+            button {
+              caption
+            }
+          }
+        }
+      }
+    }
+  `);
+  const partnerData = Data.allContentfulPartner.edges[0].node;
+
   return (
     <PartnerSectionWrapper>
       <Container>
@@ -31,15 +49,15 @@ const PartnerSection = ({
           <Box {...col} {...textArea}>
             <Heading
               {...title}
-              content="Meet our business partner who work behind the scene"
+              content={partnerData.title}
             />
             <Text
               {...description}
-              content="You can trust us for any kind of services and some of the world class companies have also trusted us.So have faith and keep in touch with us ."
+              content={partnerData.description}
             />
             <Box>
               <a href="#1">
-                <Button {...button} onClick={() => navigate('/blog')} title="LEARN MORE" />
+                <Button {...button} onClick={() => navigate('/blog')} title={partnerData.button.caption} />
               </a>
             </Box>
           </Box>
