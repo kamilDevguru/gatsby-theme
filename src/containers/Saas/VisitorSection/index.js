@@ -13,7 +13,7 @@ import FeatureBlock from '../../../common/src/components/FeatureBlock';
 import Container from '../../../common/src/components/UI/Container';
 import VisitorSectionWrapper, { SectionObject } from './visitor.style';
 
-import ImageOne from '../../../common/src/assets/image/saas/saasvisitor1.png';
+import ImageOne from '../../../common/src/assets/image/saas/saasvisitor1.jpg';
 import ImageBg from '../../../common/src/assets/image/saas/visitor_bg.png';
 
 const VisitorSection = ({
