@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
@@ -22,6 +23,23 @@ const TrialSection = ({
   btnStyle,
   outlineBtnStyle,
 }) => {
+  const Data = useStaticQuery(graphql`
+    query {
+      allContentfulTrial {
+        edges {
+          node {
+            title
+            description
+            module {
+              caption
+            }
+          }
+        }
+      }
+    }
+  `);
+  const trialData = Data.allContentfulTrial.edges[0].node;
+
   return (
     <Box {...sectionWrapper}>
       <Container>
@@ -32,16 +50,16 @@ const TrialSection = ({
           <Box {...textArea}>
             <Heading
               {...title}
-              content="Start your 30 days free trials today!"
+              content={trialData.title}
             />
             <Text
               {...description}
-              content="We have provided 30 Days Money Back Guarantee in case of dissatisfaction with our product. We care for our customers and their values."
+              content={trialData.description}
             />
             <ButtonGroup className="button_group">
-              <Button title="WORK HISTORY" {...btnStyle} />
+              <Button title={trialData.module[0].caption} {...btnStyle} />
               <Button
-                title="Login with Email"
+                title={trialData.module[1].caption}
                 variant="textButton"
                 {...outlineBtnStyle}
               />
