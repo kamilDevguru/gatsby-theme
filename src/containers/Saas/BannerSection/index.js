@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
@@ -38,6 +39,11 @@ const BannerSection = ({
             }
             module {
               caption
+            }
+            image {
+              fluid(maxWidth: 1500){
+                ...GatsbyContentfulFluid_withWebp
+              }
             }
           }
         }
@@ -93,6 +99,7 @@ const BannerSection = ({
         <div className="objectWrapper">
           <Image src={BannerObject1} alt="BannerObject1" />
           <div className="dashboardWrapper">
+            <Img fluid={bannerData.image.fluid} />
           </div>
         </div>
       </BannerObject>

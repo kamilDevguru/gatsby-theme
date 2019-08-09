@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
@@ -13,7 +14,6 @@ import FeatureBlock from '../../../common/src/components/FeatureBlock';
 import Container from '../../../common/src/components/UI/Container';
 import VisitorSectionWrapper, { SectionObject } from './visitor.style';
 
-import ImageOne from '../../../common/src/assets/image/saas/saasvisitor1.jpg';
 import ImageBg from '../../../common/src/assets/image/saas/visitor_bg.png';
 
 const VisitorSection = ({
@@ -33,6 +33,11 @@ const VisitorSection = ({
             module {
               caption
             }
+            image {
+              fluid(maxWidth: 1500){
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
           }
         }
       }
@@ -50,7 +55,7 @@ const VisitorSection = ({
           </Zoom>
           <Card className="dashboardWrapper" {...imageWrapper}>
             <Fade left>
-              <Image src={ImageOne} alt="VisitorDashboard1" />
+              <Img fluid={visitorData.image.fluid} />
             </Fade>
           </Card>
         </Card>

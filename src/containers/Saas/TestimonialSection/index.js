@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
 import Text from '../../../reusecore/src/elements/Text';
 import Heading from '../../../reusecore/src/elements/Heading';
@@ -39,6 +39,11 @@ const TestimonialSection = ({
               name
               career
               content
+              photo {
+                fluid(maxWidth: 1500){
+                  ...GatsbyContentfulFluid_withWebp
+                }
+              }
             }
           }
         }
@@ -96,10 +101,7 @@ const TestimonialSection = ({
                   </TextWrapper>
                   <ImageWrapper>
                     <RoundWrapper>
-                      {/* <Image
-                        fluid={}
-                        alt="Client Image"
-                      /> */}
+                      <Img fluid={item.photo.fluid} />
                     </RoundWrapper>
                     <Button
                       variant="fab"

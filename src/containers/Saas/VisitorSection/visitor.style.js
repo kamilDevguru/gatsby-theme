@@ -45,6 +45,7 @@ const SectionObject = styled.div`
     position: relative;
     .dashboardWrapper {
       position: absolute;
+      width: 100%;
       top: 4vw;
       left: 0;
     }

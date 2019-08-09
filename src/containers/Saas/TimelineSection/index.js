@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
@@ -7,7 +8,6 @@ import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
 import Heading from '../../../reusecore/src/elements/Heading';
 import Button from '../../../reusecore/src/elements/Button';
-import Image from '../../../reusecore/src/elements/Image';
 import Container from '../../../common/src/components/UI/Container';
 
 import {
@@ -18,8 +18,6 @@ import {
   TimelineDot,
   Hidden,
 } from './timeline.style';
-
-import Illustration from '../../../common/src/assets/image/saas/illustration.png';
 
 const TimelineSection = ({
   sectionWrapper,
@@ -51,6 +49,12 @@ const TimelineSection = ({
             button {
               caption
             }
+            
+            image {
+              fluid(maxWidth: 1500){
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
           }
         }
       }
@@ -71,7 +75,7 @@ const TimelineSection = ({
         <Box {...row}>
           <Box {...col} {...imageArea}>
             <Fade bottom>
-              <Image {...imageTwo} src={Illustration} alt="Illustration" />
+              <Img fluid={timelineData.image.fluid} />
             </Fade>
           </Box>
           <Box {...col} {...textArea}>

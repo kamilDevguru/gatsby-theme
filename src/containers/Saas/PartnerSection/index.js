@@ -1,17 +1,15 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
+import Img from 'gatsby-image'
 
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
 import Heading from '../../../reusecore/src/elements/Heading';
 import Button from '../../../reusecore/src/elements/Button';
-import Image from '../../../reusecore/src/elements/Image';
 import Container from '../../../common/src/components/UI/Container';
 
 import PartnerSectionWrapper from './partner.style';
-import Partner from '../../../common/src/assets/image/saas/partner.png';
 
 const PartnerSection = ({
   row,
@@ -32,6 +30,11 @@ const PartnerSection = ({
             button {
               caption
             }
+            image {
+              fluid(maxWidth: 1500){
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
           }
         }
       }
@@ -44,7 +47,7 @@ const PartnerSection = ({
       <Container>
         <Box {...row}>
           <Box {...col} {...imageArea}>
-            <Image src={Partner} alt="Domain Image" />
+            <Img fluid={partnerData.image.fluid} />
           </Box>
           <Box {...col} {...textArea}>
             <Heading

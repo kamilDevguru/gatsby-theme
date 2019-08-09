@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
@@ -22,14 +23,6 @@ const FeatureSection = ({
 }) => {
   const Data = useStaticQuery(graphql`
     query {
-      saasJson {
-        Features {
-          title
-          icon
-          description
-        }
-      }
-
       allContentfulFeature {
         edges {
           node {
@@ -38,6 +31,11 @@ const FeatureSection = ({
             module {
               title
               description
+              icon {
+                fluid(maxWidth: 500){
+                  ...GatsbyContentfulFluid_withWebp
+                }
+              }
             }
           }
         }
@@ -46,8 +44,6 @@ const FeatureSection = ({
   `);
 
   const featureData = Data.allContentfulFeature.edges[0].node;
-  const iconData = Data.saasJson.Features;
-
   return (
     <FeatureSectionWrapper id="service_section">
       <Container>
@@ -62,7 +58,7 @@ const FeatureSection = ({
           {featureData.module.map((service, index) => (
             <Box className="col" {...col} key={index}>
               <FeatureBlock
-                icon={<i className={iconData[index].icon} />}
+                icon={<Img fluid={service.icon.fluid} />}
                 wrapperStyle={blockWrapperStyle}
                 iconStyle={iconStyle}
                 contentStyle={contentStyle}

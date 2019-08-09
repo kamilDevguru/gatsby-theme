@@ -38,6 +38,10 @@ const FeatureBlockWrapper = styled.div`
     }
   }
 
+  .icon__wrapper div {
+    width: 60px;
+  }
+
   /* styled system prop support */
   ${display}
   ${width}

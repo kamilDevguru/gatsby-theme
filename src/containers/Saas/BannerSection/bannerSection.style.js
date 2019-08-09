@@ -77,13 +77,11 @@ const BannerObject = styled.div`
     position: relative;
     .dashboardWrapper {
       position: absolute;
+      width: 100%;
+      height: auto;
       top: 0;
       right: 0;
-      .chatObject {
-        position: absolute;
-        top: 20px;
-        left: 120px;
-      }
+      margin: 20% 0;
     }
   }
 `;

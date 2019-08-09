@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
@@ -22,15 +23,6 @@ const ServiceSection = ({
 }) => {
   const Data = useStaticQuery(graphql`
     query {
-      saasJson {
-        Service {
-          id
-          title
-          description
-          icon
-        }
-      }
-
       allContentfulService {
         edges {
           node {
@@ -39,6 +31,11 @@ const ServiceSection = ({
             module {
               title
               description
+              icon {
+                fluid(maxWidth: 500){
+                  ...GatsbyContentfulFluid_withWebp
+                }
+              }
             }
           }
         }
@@ -46,7 +43,6 @@ const ServiceSection = ({
     }
   `);
 
-  const iconData = Data.saasJson.Service;
   const serviceData = Data.allContentfulService.edges[0].node;
 
   return (
@@ -60,7 +56,7 @@ const ServiceSection = ({
           {serviceData.module.map((feature, index) => (
             <Box className="col" {...col} key={index}>
               <FeatureBlock
-                icon={<i className={iconData[index].icon} />}
+                icon={<Img fluid={feature.icon.fluid} />}
                 wrapperStyle={blockWrapperStyle}
                 iconStyle={iconStyle}
                 contentStyle={contentStyle}
