@@ -1,6 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import _ from "lodash"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,9 +11,6 @@ import {
   RelatedPostItems,
   RelatedPostTitle,
   RelatedPostItem,
-  BlogPostFooter,
-  PostTags,
-  BlogPostComment,
 } from "./templates.style"
 
 const BlogPostTemplate = (props) => {
@@ -35,28 +31,10 @@ const BlogPostTemplate = (props) => {
               ? null
               : post.cover.fluid
           }
-          description={post.html}
+          description={post.content.content}
           imagePosition="left"
           tags={post.tags.map(tag => tag.tagName)}
         />
-
-        <BlogPostFooter
-          className={post.cover == null ? "center" : ""}
-        >
-          {post.tags == null ? null : (
-            <PostTags className="post_tags">
-              {post.tags.map(tag => tag.tagName).map((tag, index) => (
-                <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
-                  {`#${tag}`}
-                </Link>
-              ))}
-            </PostTags>
-          )}
-        </BlogPostFooter>
-        <BlogPostComment
-          className={post.cover == null ? "center" : ""}
-        >
-        </BlogPostComment>
       </BlogPostDetailsWrapper>
 
       {edges.length !== 0 && (
@@ -100,7 +78,7 @@ export const pageQuery = graphql`
         tags {
           tagName
         }
-        date(formatString: "DD MMMM")
+        date(formatString: "DD MMMM, YYYY")
         cover {
           fluid(maxWidth: 1500){
             ...GatsbyContentfulFluid_withWebp
