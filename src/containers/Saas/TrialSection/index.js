@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
+
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
 import Heading from '../../../reusecore/src/elements/Heading';
@@ -17,7 +18,6 @@ const TrialSection = ({
   description,
   textArea,
   imageArea,
-  ImageOne,
   btnStyle,
   outlineBtnStyle,
 }) => {
