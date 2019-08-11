@@ -4,7 +4,7 @@ const _ = require('lodash')
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const blogList = path.resolve(`./src/templates/blog-list.js`)
   // const tagTemplate = path.resolve(`./src/templates/tags.js`)
 
@@ -39,21 +39,21 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allContentfulBlog.edges
 
-    // posts.forEach((post, index) => {
-    //   const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    //   const next = index === 0 ? null : posts[index - 1].node
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
 
-    //   createPage({
-    //     path: post.node.slug,
-    //     component: blogPost,
-    //     context: {
-    //       slug: post.node.slug,
-    //       previous,
-    //       next,
-    //       tag: post.node.tags.map(tag => tag.tagName),
-    //     },
-    //   })
-    // })
+      createPage({
+        path: `/blog/${post.node.slug}`,
+        component: blogPost,
+        context: {
+          slug: post.node.slug,
+          previous,
+          next,
+          tag: post.node.tags.map(tag => tag.tagName),
+        },
+      })
+    })
 
     // Create blog post list pages
     const postsPerPage = 6
@@ -98,13 +98,3 @@ exports.createPages = ({ graphql, actions }) => {
   })
 }
 
-// for React-Hot-Loader: react-🔥-dom patch is not detected
-// exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
-//   const config = getConfig()
-//   if (stage.startsWith('develop') && config.resolve) {
-//     config.resolve.alias = {
-//       ...config.resolve.alias,
-//       'react-dom': '@hot-loader/react-dom',
-//     }
-//   }
-// }

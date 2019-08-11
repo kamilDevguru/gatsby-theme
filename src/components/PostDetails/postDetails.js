@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import _ from "lodash"
@@ -24,7 +24,7 @@ const PostDetails = ({
 }) => {
   const addClass = ["post_details"]
 
-  if (imagePosition == "left") {
+  if (imagePosition === "left") {
     addClass.push("image_left")
   }
 
@@ -34,9 +34,9 @@ const PostDetails = ({
 
   return (
     <PostDetailsWrapper {...props} className={addClass.join(" ")}>
-      {imagePosition == "left" ? (
+      {imagePosition === "left" ? (
         <>
-          {preview == null ? null : (
+          {preview === null ? null : (
             <PostPreview className="post_preview">
               <Img fluid={preview} alt={title} />
             </PostPreview>
@@ -46,7 +46,7 @@ const PostDetails = ({
         ""
       )}
 
-      {imagePosition == "top" ? (
+      {imagePosition === "top" ? (
         <>
           <PostTitle>{title}</PostTitle>
           <PostDate>{date}</PostDate>
@@ -55,9 +55,9 @@ const PostDetails = ({
         ""
       )}
 
-      {imagePosition == "top" ? (
+      {imagePosition === "top" ? (
         <>
-          {preview == null ? null : (
+          {preview === null ? null : (
             <PostPreview className="post_preview">
               <Img fluid={preview} alt={title} />
             </PostPreview>
@@ -67,7 +67,7 @@ const PostDetails = ({
         ""
       )}
       <PostDescriptionWrapper className="post_des_wrapper">
-        {imagePosition == "left" ? (
+        {imagePosition === "left" ? (
           <>
             <PostTitle>{title}</PostTitle>
             <PostDate>{date}</PostDate>
@@ -79,7 +79,7 @@ const PostDetails = ({
           dangerouslySetInnerHTML={{ __html: description }}
           className="post_des"
         />
-        {tags == null ? null : (
+        {tags === null ? null : (
           <PostTags>
             {tags.map((tag, index) => (
               <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
