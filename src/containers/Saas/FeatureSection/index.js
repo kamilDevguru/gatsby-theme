@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
 import Heading from '../../../reusecore/src/elements/Heading';
-import FeatureBlock from '../../../common/src/components/FeatureBlock';
+import FeatureBlock from '../../../components/FeatureServiceBlock';
 import Container from '../../../common/src/components/UI/Container';
 import FeatureSectionWrapper from './featureSection.style';
 
@@ -17,7 +17,6 @@ const FeatureSection = ({
   sectionSubTitle,
   featureTitle,
   featureDescription,
-  iconStyle,
   contentStyle,
   blockWrapperStyle,
 }) => {
@@ -32,7 +31,7 @@ const FeatureSection = ({
               title
               description
               icon {
-                fluid(maxWidth: 500){
+                fluid(maxWidth: 108){
                   ...GatsbyContentfulFluid_withWebp
                 }
               }
@@ -60,13 +59,11 @@ const FeatureSection = ({
               <FeatureBlock
                 icon={<Img fluid={service.icon.fluid} />}
                 wrapperStyle={blockWrapperStyle}
-                iconStyle={iconStyle}
                 contentStyle={contentStyle}
                 title={<Heading content={service.title} {...featureTitle} />}
                 description={
                   <Text content={service.description} {...featureDescription} />
                 }
-                className="saasFeature"
               />
             </Box>
           ))}
@@ -122,27 +119,9 @@ FeatureSection.defaultProps = {
   col: {
     width: [1, 1 / 2, 1 / 3, 1 / 3],
   },
-  // feature block wrapper default style
-  blockWrapperStyle: {
-    p: ['30px', '20px', '20px', '20px'],
-  },
-  // feature icon default style
-  iconStyle: {
-    width: ['70px', '75px', '75px', '84px'],
-    height: ['70px', '75px', '75px', '84px'],
-    borderRadius: '50%',
-    bg: '#93d26e',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: ['32px', '36px'],
-    color: '#ffffff',
-    overflow: 'hidden',
-    mb: ['20px', '20px', '20px', '30px'],
-    borderBottomLeftRadius: '50%',
-  },
   // feature content default style
   contentStyle: {
+    p: [27, 44, 44, 48],
     textAlign: 'left',
   },
   // feature title default style
