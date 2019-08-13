@@ -54,7 +54,10 @@ const BannerSection = ({
 
   const ButtonGroup = () => (
     <Fragment>
-      <Button title={bannerData.module[0].caption} {...btnStyle} />
+      <Button
+        title={bannerData.module[0].caption}
+        {...btnStyle}
+      />
       <Button
         className="outlined"
         title={bannerData.module[1].caption}
@@ -63,7 +66,10 @@ const BannerSection = ({
       />
     </Fragment>
   );
-  const onlineNumber = Math.floor(Math.random() * 31) + 10; // NOTE: Generating random number between 10-40
+  console.log('time :', new Date().getHours());
+  const onlineNumber = new Date().getHours() >=9 && new Date().getHours() < 21
+    ? Math.floor(Math.random() * 41) // NOTE: Generating random number between 0-40 between 9 AM to 9 PM
+    : Math.floor(Math.random() * 6);
 
   return (
     <BannerWrapper id="banner_section">
@@ -81,7 +87,7 @@ const BannerSection = ({
                   content={bannerData.title}
                   {...title}                  
                   fontWeight={600}
-                  color='#272838'
+                  color='#33475b'
                 />
               }
               description={
@@ -140,7 +146,7 @@ BannerSection.defaultProps = {
   },
   description: {
     fontSize: '16px',
-    color: '#343d48cc',
+    color: '#343d48',
     lineHeight: '1.75',
     mb: '0',
   },
@@ -148,13 +154,13 @@ BannerSection.defaultProps = {
     minWidth: ['120px', '120px', '120px', '156px'],
     fontSize: ['13px', '14px'],
     fontWeight: '500',
-    colors: 'primaryWithBg',
+    backgroundColor: '#ff7a59',
   },
   outlineBtnStyle: {
     minWidth: '156px',
     fontSize: '14px',
     fontWeight: '500',
-    color: '#5167db',
+    color: '#ff7a59',
     ml: '18px',
   },
   discountAmount: {
