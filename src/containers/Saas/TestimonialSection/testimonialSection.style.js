@@ -91,6 +91,10 @@ const RoundWrapper = styled.div`
     rgba(199, 195, 134, 1) 100%
   );
   overflow: hidden;
+
+  div {
+    height: 256px;
+  }
 `;
 
 const ClientName = styled.div`
