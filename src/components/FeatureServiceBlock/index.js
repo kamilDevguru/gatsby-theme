@@ -23,6 +23,7 @@ const FeatureBlock = ({
   wrapperStyle,
   contentStyle,
   btnWrapperStyle,
+  buttonStyle,
   ...props
 }) => {
   // Add all classs to an array
@@ -78,6 +79,7 @@ const FeatureBlock = ({
                 title={buttonInfo.caption}
                 className="start_button"
                 onClick={() => navigate(buttonInfo.link)}
+                {...buttonStyle}
               />
             )}
           </ContentWrapper>
@@ -117,6 +119,17 @@ FeatureBlock.propTypes = {
 
 FeatureBlock.defaultProps = {
   iconPosition: 'top',
+  buttonStyle: {
+    type: 'button',
+    fontSize: '14px',
+    fontWeight: '600',
+    borderRadius: '4px',
+    pl: '10px',
+    pr: '10px',
+    colors: 'primary',
+    width: '222px',
+    maxWidth: '100%',
+  },
 };
 
 export default FeatureBlock;

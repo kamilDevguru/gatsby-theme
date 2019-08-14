@@ -40,9 +40,9 @@ export const saasTheme = {
         color: colors.white,
         backgroundColor: colors.primaryHover,
         borderColor: colors.transparent,
-        boxShadow: '0px 9px 20px -5px rgba(82, 104, 219, 0.57)',
+        boxShadow: '0px 9px 20px -5px rgba(256, 122, 89, 0.57)',
         backgroundImage:
-          'linear-gradient( 31deg, rgba(215,178,233, 0.4) 0%, rgba(83,105,220, 0.4) 100%)',
+          'linear-gradient( 31deg, rgba(256, 122, 89, 0.3) 0%, rgba(256, 122, 89, 0.4) 100%)',
       },
     },
     secondary: {
@@ -74,11 +74,11 @@ export const saasTheme = {
       backgroundColor: colors.primary,
       borderColor: colors.primary,
       backgroundImage:
-        'linear-gradient( 31deg, rgba(215,178,233, 0.4) 0%, rgba(83,105,220, 0.4) 100%)',
+        'linear-gradient( 31deg, rgba(256, 122, 89, 0.3) 0%, rgba(256, 122, 89, 0.4) 100%)',
       '&:hover': {
         backgroundColor: colors.primaryHover,
         borderColor: colors.primaryHover,
-        boxShadow: '0px 9px 20px -5px rgba(82, 104, 219, 0.57)',
+        boxShadow: '0px 9px 20px -5px rgba(256, 122, 89, 0.57)',
       },
     },
     secondaryWithBg: {

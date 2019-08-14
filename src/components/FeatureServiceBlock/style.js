@@ -126,9 +126,6 @@ const ContentWrapper = styled.div`
 
   .start_button {
     width: 100%;
-    background: #EAF0F6;
-    border: 1px solid #CBD6E2;
-    color: #33475B;
     font-size: 14px;
   }
 `;
