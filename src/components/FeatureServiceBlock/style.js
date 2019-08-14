@@ -57,11 +57,27 @@ const FeatureBlockWrapper = styled.div`
 
   //
   
-  max-width: 360px;
   box-shadow: 0px 4px 31px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  margin: auto 15px;
+  margin: 15px;
   padding: 0px;
+  height: auto;
+
+  .icon_container {
+    height: 200px;
+    background: #5166DA !important;
+    padding: 0px;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: white;
+      font-size: 16px;
+    }
+  }
 `;
 
 // Icon wrapper style
@@ -80,22 +96,41 @@ const IconWrapper = styled.div`
   ${borderRadius}
   ${overflow}
   ${fontSize}
-  height: 200px;
-  background: #5166DA !important;
-  padding: 0px;
-  border-radius: 6px 6px 0 0;
-
-  div {
-    width: 108px;
-    height: 83px;
-  }
+  margin-top: 24px;
 `;
 
 // Content wrapper style
 const ContentWrapper = styled.div`
   ${width}
   ${space}
-  ${textAlign}
+  ${textAlign}  
+  padding: 24px 32px !important;
+
+  .content__desc {
+    height: 120px;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-weight: 600;
+    color: #0f2137;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .content__time {
+    color: #5166DA;
+  }
+
+  .start_button {
+    width: 100%;
+    background: #EAF0F6;
+    border: 1px solid #CBD6E2;
+    color: #33475B;
+    font-size: 14px;
+  }
 `;
 
 // Button wrapper style

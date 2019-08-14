@@ -11,7 +11,6 @@ const FeatureSectionWrapper = styled.section`
 
   .feature__block {
     position: relative;
-    height: 100%;
     transition: box-shadow 0.3s ease;
     @media (max-width: 500px) {
       padding: 30px 0;

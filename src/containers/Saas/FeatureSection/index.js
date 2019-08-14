@@ -30,8 +30,15 @@ const FeatureSection = ({
             module {
               title
               description
+              itemNumber
+              time
+              field
+              button {
+                caption
+                link
+              }
               icon {
-                fluid(maxWidth: 108){
+                fluid(maxWidth: 96){
                   ...GatsbyContentfulFluid_withWebp
                 }
               }
@@ -60,6 +67,10 @@ const FeatureSection = ({
                 icon={<Img fluid={service.icon.fluid} />}
                 wrapperStyle={blockWrapperStyle}
                 contentStyle={contentStyle}
+                field={service.field}
+                itemNumber={service.itemNumber}
+                time={service.time}
+                buttonInfo={service.button}
                 title={<Heading content={service.title} {...featureTitle} />}
                 description={
                   <Text content={service.description} {...featureDescription} />
@@ -118,6 +129,7 @@ FeatureSection.defaultProps = {
   // feature col default style
   col: {
     width: [1, 1 / 2, 1 / 3, 1 / 3],
+    mb: '15',
   },
   // feature content default style
   contentStyle: {

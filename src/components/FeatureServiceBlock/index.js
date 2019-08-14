@@ -1,16 +1,22 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { navigate } from 'gatsby';
+
+import Button from '../../reusecore/src/elements/Button';
+
 import FeatureBlockWrapper, {
   IconWrapper,
   ContentWrapper,
-  ButtonWrapper,
 } from './style.js';
 
 const FeatureBlock = ({
   className,
   icon,
+  field,
+  itemNumber,
+  time,
+  buttonInfo,
   title,
-  button,
   description,
   iconPosition,
   additionalContent,
@@ -34,7 +40,11 @@ const FeatureBlock = ({
 
   // check icon value and add
   const Icon = icon && (
-    <IconWrapper className="icon__wrapper" width='100%'>
+    <IconWrapper
+      className="icon__wrapper"
+      width='96px' 
+      height='50%'
+    >
       {icon}
     </IconWrapper>
   );
@@ -45,17 +55,30 @@ const FeatureBlock = ({
       {...wrapperStyle}
       {...props}
     >
-      {Icon}
+      <div className="icon_container">
+        {Icon}
+        <p>{field}</p>
+      </div>
 
-      {title || description || button ? (
+      {title || description ? (
         <Fragment>
           <ContentWrapper className="content__wrapper" {...contentStyle}>
-            {title}
-            {description}
-            {button && (
-              <ButtonWrapper className="button__wrapper" {...btnWrapperStyle}>
-                {button}
-              </ButtonWrapper>
+            <div className="content__desc">
+              {title}
+              {description}
+            </div>
+            {itemNumber && (
+              <p>{`${itemNumber} items`}</p>
+            )}
+            {time && (
+              <p className="content__time">{time}</p>
+            )}
+            {buttonInfo && (              
+              <Button
+                title={buttonInfo.caption}
+                className="start_button"
+                onClick={() => navigate(buttonInfo.link)}
+              />
             )}
           </ContentWrapper>
           {additionalContent}
@@ -76,9 +99,6 @@ FeatureBlock.propTypes = {
 
   /** description prop contain a react component. You can use our Text component from reusecore */
   description: PropTypes.element,
-
-  /** button prop contain a react component. You can use our Button component from reusecore */
-  button: PropTypes.element,
 
   /** Set icon position of the FeatureBlock */
   iconPosition: PropTypes.oneOf(['top', 'left', 'right']),
