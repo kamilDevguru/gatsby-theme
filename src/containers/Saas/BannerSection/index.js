@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-// import Img from 'gatsby-image'
 import PropTypes from 'prop-types';
 import Box from '../../../reusecore/src/elements/Box';
 import Text from '../../../reusecore/src/elements/Text';
-import Image from '../../../reusecore/src/elements/Image';
 import Heading from '../../../reusecore/src/elements/Heading';
 import Button from '../../../reusecore/src/elements/Button';
 import FeatureBlock from '../../../common/src/components/FeatureBlock';
@@ -13,10 +11,7 @@ import Container from '../../../common/src/components/UI/Container';
 import Particles from '../Particle';
 import BannerWrapper, {
   DiscountLabel,
-  BannerObject,
 } from './bannerSection.style';
-
-import BannerObject1 from '../../../common/src/assets/image/saas/banner/bannerObject1.png';
 
 const BannerSection = ({
   row,
@@ -96,14 +91,6 @@ const BannerSection = ({
           </Box>
         </Box>
       </Container>
-      <BannerObject>
-        <div className="objectWrapper">
-          <Image src={BannerObject1} alt="BannerObject1" />
-          <div className="dashboardWrapper">
-            {/* <Img fluid={bannerData.image.fluid} /> */}
-          </div>
-        </div>
-      </BannerObject>
     </BannerWrapper>
   );
 };

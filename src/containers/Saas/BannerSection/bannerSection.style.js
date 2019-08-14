@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import BannerBG from '../../../common/src/assets/image/saas/saas-banner.jpg';
 
 const BannerWrapper = styled.section`
   padding-top: 150px;
   padding-bottom: 160px;
-  background-image: url(${BannerBG});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
