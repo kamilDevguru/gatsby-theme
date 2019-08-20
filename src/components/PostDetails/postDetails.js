@@ -2,6 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import _ from "lodash"
+import { Row, Col } from "react-bootstrap"
 import {
   PostDetailsWrapper,
   PostTitle,
@@ -18,63 +19,45 @@ const PostDetails = ({
   preview,
   description,
   tags,
-  className,
-  imagePosition,
   ...props
 }) => {
-  const addClass = ["post_details"]
-
-  if (imagePosition === "left") {
-    addClass.push("image_left")
-  }
-
-  if (className) {
-    addClass.push(className)
-  }
-
   return (
-    <PostDetailsWrapper {...props} className={addClass.join(" ")}>
-      {imagePosition === "left" ? (
-        <>
-          {preview === null ? null : (
-            <PostPreview className="post_preview">
+    <PostDetailsWrapper {...props} className="post_details">
+      {preview === null ? null : (
+        <PostPreview className="post_preview">
+          <Row>
+            <Col md={5} sm={12}className="post-header__text">
+              <p className="post-header__meta">
+                MARKETING | 7 MIN READ
+              </p>
+              <h1 className="post-header__title">
+                {title}
+              </h1>
+              <Row className="post-author-tag">
+                <Col xs={4} className="post-author-tag__image-container">
+                  <a href="#">
+                    <img src="" alt="author" />
+                  </a>
+                </Col>
+                <Col xs={8} className="post-author-tag__text">
+                  <p>
+                    Written by
+                    <a href="#">Eddie Shleyner</a>
+                  </p>
+                  <a href="https://twitter.com/VeryGoodCopy" className="post-author-tag__twitter">
+                    @VeryGoodCopy
+                  </a>
+                </Col>
+              </Row>
+            </Col>
+            <Col md={7} sm={12} className="post-header__image">
               <Img fluid={preview} alt={title} />
-            </PostPreview>
-          )}
-        </>
-      ) : (
-        ""
-      )}
-
-      {imagePosition === "top" ? (
-        <>
-          <PostTitle>{title}</PostTitle>
-          <PostDate>{date}</PostDate>
-        </>
-      ) : (
-        ""
-      )}
-
-      {imagePosition === "top" ? (
-        <>
-          {preview === null ? null : (
-            <PostPreview className="post_preview">
-              <Img fluid={preview} alt={title} />
-            </PostPreview>
-          )}
-        </>
-      ) : (
-        ""
+            </Col>
+          </Row>
+        </PostPreview>
       )}
       <PostDescriptionWrapper className="post_des_wrapper">
-        {imagePosition === "left" ? (
-          <>
-            <PostTitle>{title}</PostTitle>
-            <PostDate>{date}</PostDate>
-          </>
-        ) : (
-          ""
-        )}
+        <PostDate>{date}</PostDate>
         <PostDescription
           dangerouslySetInnerHTML={{ __html: description }}
           className="post_des"

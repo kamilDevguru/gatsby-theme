@@ -16,11 +16,12 @@ import {
 const BlogPostTemplate = (props) => {
   const post = props.data.contentfulBlog
   const { edges } = props.data.allContentfulBlog
+
   return (
     <Layout>
       <SEO
         title={post.title}
-        description={post.content.content || post.excerpt}
+        description={post.content.content}
       />
       <BlogPostDetailsWrapper>
         <PostDetails
@@ -32,8 +33,14 @@ const BlogPostTemplate = (props) => {
               : post.cover.fluid
           }
           description={post.content.content}
-          imagePosition="left"
           tags={post.tags.map(tag => tag.tagName)}
+          author={{
+            name: post.authorName,
+            socialName: post.authorTwitterName,
+            socialLink: post.authorTwitterLink,
+            photo: post.authorPhoto.fluid
+          }}
+          readTime={post.readTime}
         />
       </BlogPostDetailsWrapper>
 
@@ -45,7 +52,7 @@ const BlogPostTemplate = (props) => {
               <RelatedPostItem key={node.slug}>
                 <PostCard
                   title={node.title || node.slug}
-                  url={node.slug}
+                  url={`/blog/${node.slug}`}
                   image={
                     node.cover == null
                       ? null
@@ -86,13 +93,20 @@ export const pageQuery = graphql`
         }
         slug
         readTime
+        authorName
+        authorTwitterLink
+        authorTwitterName
+        authorPhoto {
+          fluid(maxWidth: 500){
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
       }
 
     allContentfulBlog (
       sort: { fields: [date], order: DESC }
       limit: 3
       filter: {
-        slug: { eq: $slug }
         node_locale: { eq: "en-US"}
       }
     ) {

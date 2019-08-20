@@ -5,7 +5,12 @@ import MasonryCard from "../components/MasonryCard/masonryCard"
 import Pagination from "../components/Pagination/pagination"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { BlogPostsWrapper, PostRow, PostCol } from "./templates.style"
+import {
+  BlogPostsWrapper,
+  BlogHeroWrapper,
+  PostRow,
+  PostCol,
+} from "./templates.style"
 
 const BlogList = (props) => {
   const { data } = props
@@ -22,8 +27,26 @@ const BlogList = (props) => {
   return (
     <Layout>
       <SEO title={`Page ${currentPage}`} />
-
       <BlogPostsWrapper>
+        <BlogHeroWrapper>
+          <div className="academy-hero__item">
+            <div className="academy-hero__text">
+              <h1>Online Boekhouden</h1>
+              <p>
+                Leer alles over slim online boekhouden. Bekijk het aanbod van
+                online boekhoudprogramma's en vergelijk deze op prijs en kwaliteit.
+              </p>
+            </div>
+            <div className="academy-hero__cta-wrapper">
+              <a className="academy-hero__cta" href="#">
+                Alle online boekhoudprogramma's
+              </a>
+            </div>
+          </div>
+          <div className="academy-hero__item">
+            <div className="placeholder" />
+          </div>
+        </BlogHeroWrapper>
         <PostRow>
           <Masonry className="showcase">
             {Posts.map(({ node }) => {
@@ -36,7 +59,7 @@ const BlogList = (props) => {
                         ? null
                         : node.cover.fluid
                     }
-                    url={node.slug}
+                    url={`/blog/${node.slug}`}
                     date={node.date}
                     tags={node.tags.map(tag => tag.tagName)}
                     readTime={node.readTime}

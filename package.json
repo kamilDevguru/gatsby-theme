@@ -29,6 +29,7 @@
     "react": "^16.8.6",
     "react-accessible-accordion": "^3.0.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-bootstrap": "^1.0.0-beta.11",
     "react-content-loader": "^4.2.2",
     "react-countdown-now": "^2.1.1",
     "react-countup": "^4.1.3",

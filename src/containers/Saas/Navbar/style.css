@@ -1,0 +1,17 @@
+.academy-nav {
+  display: inline-block;
+  text-align: center;
+  font-size: 0.75em;
+  font-weight: 400;
+  padding: 0.563rem 1rem;
+  background-color: #ff7a59;
+  line-height: 1.25;
+  border-radius: .1875rem;
+  transition: 0.15s background-color ease-out;
+  text-decoration: none;
+  color: white;
+}
+
+.academy-nav:hover {
+  background-color: #ff8f73;
+}

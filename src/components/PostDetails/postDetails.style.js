@@ -83,17 +83,6 @@ export const PostPreview = styled.div`
   img {
     border-radius: 3px;
   }
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    background-color: #757575;
-    bottom: 0;
-    left: 10%;
-    filter: blur(15px);
-  }
 `;
 
 export const PostDescriptionWrapper = styled.div`
