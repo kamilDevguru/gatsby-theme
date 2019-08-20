@@ -16,7 +16,6 @@ import {
 const BlogPostTemplate = (props) => {
   const post = props.data.contentfulBlog
   const { edges } = props.data.allContentfulBlog
-  console.log('post :', post);
 
   return (
     <Layout>
