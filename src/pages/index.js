@@ -5,7 +5,6 @@ import FeatureSection from '../containers/Saas/FeatureSection';
 import VisitorSection from '../containers/Saas/VisitorSection';
 import ServiceSection from '../containers/Saas/ServiceSection';
 import FaqSection from '../containers/Saas/FaqSection';
-import Footer from '../containers/Saas/Footer';
 import PricingSection from '../containers/Saas/PricingSection';
 import TrialSection from '../containers/Saas/TrialSection';
 import TimelineSection from '../containers/Saas/TimelineSection';
@@ -28,7 +27,6 @@ export default () => {
         <TimelineSection />
         <FaqSection />
         <TrialSection />
-        <Footer />
       </Layout>
     </>
   );

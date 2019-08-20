@@ -8,6 +8,7 @@ import { saasTheme } from '../common/src/theme/saas';
 import { ResetCSS } from '../common/src/assets/css/style';
 import { GlobalStyle, ContentWrapper } from '../containers/Saas/saas.style';
 import Navbar from '../containers/Saas/Navbar';
+import Footer from '../containers/Saas/Footer';
 import { DrawerProvider } from '../common/src/contexts/DrawerContext';
 
 const Layout = ({ children }) => (
@@ -33,6 +34,7 @@ const Layout = ({ children }) => (
               </DrawerProvider>
             </Sticky>
             {children}
+            <Footer />
           </ContentWrapper>
         </main>
       </ThemeProvider>
