@@ -10,6 +10,7 @@ import Container from '../../../common/src/components/UI/Container';
 import { DrawerContext } from '../../../common/src/contexts/DrawerContext';
 import ScrollSpyMenu from '../../../common/src/components/ScrollSpyMenu';
 
+import './style.css';
 import LogoImage from '../../../common/src/assets/image/saas/logo.png';
 
 const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
@@ -39,12 +40,14 @@ const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
     });
   };
 
+  const path = typeof document !== 'undefined' ? document.location.pathname : '';
+
   return (
     <NavbarWrapper {...navbarStyle}>
       <Container>
         <Box {...row}>
           <Logo
-            href="#"
+            href="/"
             logoSrc={LogoImage}
             title="Agency"
             logoStyle={logoStyle}
@@ -70,6 +73,9 @@ const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper }) => {
               />
             </Drawer>
           </Box>
+          {path.includes('page') && (
+            <a className="academy-nav" href="/login">Login</a>
+          )}
         </Box>
       </Container>
     </NavbarWrapper>
