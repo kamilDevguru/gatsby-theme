@@ -95,9 +95,6 @@ export const RelatedPostItem = styled.div`
         display: block;
         transition: 0.25s ease-in-out;
       }
-      &:before {
-        filter: blur(10px);
-      }
     }
     .post_title {
       font-size: 21px;

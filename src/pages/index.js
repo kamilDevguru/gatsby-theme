@@ -1,10 +1,5 @@
-import React, { Fragment } from 'react';
-import Sticky from 'react-stickynode';
-import { ThemeProvider } from 'styled-components';
-import { saasTheme } from '../common/src/theme/saas';
-import { ResetCSS } from '../common/src/assets/css/style';
-import { GlobalStyle, ContentWrapper } from '../containers/Saas/saas.style';
-import Navbar from '../containers/Saas/Navbar';
+import React from 'react';
+import Layout from '../components/layout';
 import BannerSection from '../containers/Saas/BannerSection';
 import FeatureSection from '../containers/Saas/FeatureSection';
 import VisitorSection from '../containers/Saas/VisitorSection';
@@ -16,35 +11,25 @@ import TrialSection from '../containers/Saas/TrialSection';
 import TimelineSection from '../containers/Saas/TimelineSection';
 import TestimonialSection from '../containers/Saas/TestimonialSection';
 import PartnerSection from '../containers/Saas/PartnerSection';
-import { DrawerProvider } from '../common/src/contexts/DrawerContext';
 import SEO from '../components/seo';
 
 export default () => {
   return (
-    <ThemeProvider theme={saasTheme}>
-      <Fragment>
-        <SEO title="Saas | A react next landing page" />
-        <ResetCSS />
-        <GlobalStyle />
-        <ContentWrapper>
-          <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
-            <DrawerProvider>
-              <Navbar />
-            </DrawerProvider>
-          </Sticky>
-          <BannerSection />
-          <FeatureSection />
-          <VisitorSection />
-          <ServiceSection />
-          <PricingSection />
-          <TestimonialSection />
-          <PartnerSection />
-          <TimelineSection />
-          <FaqSection />
-          <TrialSection />
-          <Footer />
-        </ContentWrapper>
-      </Fragment>
-    </ThemeProvider>
+    <>
+      <SEO title="Saas | A react next landing page" />
+      <Layout>
+        <BannerSection />
+        <FeatureSection />
+        <VisitorSection />
+        <ServiceSection />
+        <PricingSection />
+        <TestimonialSection />
+        <PartnerSection />
+        <TimelineSection />
+        <FaqSection />
+        <TrialSection />
+        <Footer />
+      </Layout>
+    </>
   );
 };

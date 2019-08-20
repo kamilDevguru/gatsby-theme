@@ -22,7 +22,6 @@ const BlogList = (props) => {
   return (
     <Layout>
       <SEO title={`Page ${currentPage}`} />
-
       <BlogPostsWrapper>
         <PostRow>
           <Masonry className="showcase">
@@ -36,7 +35,7 @@ const BlogList = (props) => {
                         ? null
                         : node.cover.fluid
                     }
-                    url={node.slug}
+                    url={`/blog/${node.slug}`}
                     date={node.date}
                     tags={node.tags.map(tag => tag.tagName)}
                     readTime={node.readTime}
