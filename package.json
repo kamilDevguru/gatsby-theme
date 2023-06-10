@@ -8,7 +8,7 @@
     "@glidejs/glide": "^3.3.0",
     "@redq/reuse-modal": "^1.1.9",
     "dotenv": "^8.0.0",
-    "gatsby": "^2.13.12",
+    "gatsby": "^4.25.7",
     "gatsby-image": "^2.2.4",
     "gatsby-plugin-manifest": "^2.2.1",
     "gatsby-plugin-offline": "^2.2.1",
